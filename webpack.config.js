@@ -3,11 +3,14 @@ const UrglifyJSPlugin  = require('uglifyjs-webpack-plugin')
 const env = process.env.NODE_ENV === "dev"
 
 let config = {
-    entry: './js/main.js',
+    entry: {
+        main: './js/main.js',
+        userfinder: './js/userfinder.js'
+    },
     watch: env,
     output: {
         path: path.resolve(__dirname, './build'),
-        filename: "main.bundle.js",
+        filename: "[name].bundle.js",
         publicPath: "./build/",
     },
     devtool: env ? "cheap-module-eval-source-map": "source-map",
